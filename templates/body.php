@@ -6,7 +6,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
         <?php
-        if ($action !== 'edit') {
+        if (!isset($studentToEdit)) {
             require_once('forms/add_student_form.php');
         } else {
             require_once('forms/edit_student_form.php');

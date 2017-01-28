@@ -2,17 +2,11 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 require_once 'libs/functions.php';
-require_once 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use model\Student;
 
-if (isset($_GET['action']) && $_GET['action'] === 'delete') {
-    Student::dropTable();
-    header("Location: /");
-    die();
-}
 $action = '';
-
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
 } elseif (isset($_GET['action'])) {
@@ -87,6 +81,35 @@ switch ($action) {
                 header('Location: /');
             }
         }
+        break;
+    case 'delete':
+        Student::dropTable();
+        header("Location: /");
+        die('Redirected to index');
+        break;
+    case 'edit':
+        if (isset($_GET['id'])) {
+            $studentToEdit = Student::getById($_GET['id']);
+            if (!$studentToEdit) {
+                break;
+            }
+            if (count($_POST) === 6 && each_true($_POST, function ($arr, $key, $value) {
+                    return $value !== '' ? true : false;
+                }))
+            {
+                $studentToEdit
+                    ->setName($_POST['name'])
+                    ->setSurname($_POST['surname'])
+                    ->setScore($_POST['score'])
+                    ->setGroup($_POST['group'])
+                    ->setEmail($_POST['email'])
+                    ->update();
+                header("Location: /");
+                die('Redirected to index');
+                break;
+            }
+        }
+        break;
 }
 
 $students = Student::getAll();

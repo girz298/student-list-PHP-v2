@@ -1,38 +1,38 @@
-<form class="form-horizontal" method="post" action="/">
-    <input type="hidden" name="action" value="add">
+<form class="form-horizontal" method="post" action="<?=isset($_SERVER['REQUEST_URI'])?$_SERVER['REQUEST_URI']:'/'?>">
+    <input type="hidden" name="action" value="edit">
 
     <div class="form-group">
-        <label class="control-label col-md-2" for="name">Name:</label>
-        <div class="col-md-10">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+        <label class="control-label col-md-3" for="name">Name:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="name" name="name" value="<?=$studentToEdit->getName()?>">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" for="surname">Surname:</label>
-        <div class="col-md-10">
-            <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter surname">
+        <label class="control-label col-md-3" for="surname">Surname:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="surname" name="surname" value="<?=$studentToEdit->getSurname()?>">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" for="group">Group number:</label>
-        <div class="col-md-10">
-            <input type="text" class="form-control" id="group" name="group" placeholder="Enter group number">
+        <label class="control-label col-md-3" for="group">Group number:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="group" name="group" value="<?=$studentToEdit->getGroup()?>">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" for="score">Score:</label>
-        <div class="col-md-10">
-            <input type="text" class="form-control" id="score" name="score" placeholder="Enter score">
+        <label class="control-label col-md-3" for="score">Score:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="score" name="score" value="<?=$studentToEdit->getScore()?>">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" for="email">Email:</label>
-        <div class="col-md-10">
-            <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+        <label class="control-label col-md-3" for="email">Email:</label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="email" name="email" value="<?=$studentToEdit->getEmail()?>">
         </div>
     </div>
 

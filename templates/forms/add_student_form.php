@@ -38,7 +38,7 @@
 
     <div class="form-group">
         <div class="col-md-12">
-            <button type="submit" class="btn btn-default btn-block"><b>Submit</b></button>
+            <button type="submit" value="submit" class="btn btn-default btn-block"><b>Submit</b></button>
         </div>
     </div>
 </form>
